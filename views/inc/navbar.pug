@@ -1,4 +1,4 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-info
+nav.navbar.navbar-expand-lg.navbar-light.bg-warning
     //-- side menu --
     if role != "guest"
         //- side menu toggle button
@@ -25,8 +25,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-info
     //-- navigation bar --
     //- navigation left side items
     a#nav_brand.navbar-brand(href='#')
-        img(src="/images/bc_logo_md.png")
-        label#logo_name PCAS
+        img(src="/images/logo_clean.png")
+        label#logo_name Job Platform
     button.navbar-btn.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation")
         span.fas.fa-chevron-down
 
@@ -41,5 +41,5 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-info
                 |Signup
         form.form-inline
             input#nav_search_input.form-control.mr-sm-2(type='search', placeholder='Search')
-            button#nav_search_submit.btn.btn-success(type='submit') Search
+            button#nav_search_submit.btn.btn-outline-success(type='submit') Search
         

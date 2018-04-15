@@ -1,0 +1,45 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-info
+    //-- side menu --
+    if role != "guest"
+        //- side menu toggle button
+        span#side_menu_btn.side-menu-btn-span
+            i.fas.fa-bars.side-menu-btn
+        #side_menu.side-menu
+            a#side_close_btn.side-close-btn(href="javascript:void(0)") &times;
+            //- side menu items by login roles
+            case role
+                when "interpreter"
+                    a(href="/createpost") Create Post
+                    a(href="/mypost") My Post
+                    a(href="/profile") Profile
+                    a#logout_btn(href="javascript:void(0)") Log out
+                when "transcriber"
+                    a(href="/createpost") Create Post
+                    a(href="/myapplication") My application
+                    a(href="/profile") Profile
+                    a#logout_btn(href="javascript:void(0)") Log out
+                default
+                    a(href="/login") Login
+                    a(href="/register") Register
+    
+    //-- navigation bar --
+    //- navigation left side items
+    a#nav_brand.navbar-brand(href='#')
+        img(src="/images/bc_logo_md.png")
+        label#logo_name PCAS
+    button.navbar-btn.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation")
+        span.fas.fa-chevron-down
+
+    //- navigation right side items
+    #navbarNavAltMarkup.collapse.navbar-collapse.justify-content-end
+        a.nav-item.nav-link.active(href="/board")
+            |Home
+        if role == "guest" || role == undefined
+            a.nav-item.nav-link.active(href="/login")
+                |Login
+            a.nav-item.nav-link.active(href="/register")
+                |Signup
+        form.form-inline
+            input#nav_search_input.form-control.mr-sm-2(type='search', placeholder='Search')
+            button#nav_search_submit.btn.btn-success(type='submit') Search
+        

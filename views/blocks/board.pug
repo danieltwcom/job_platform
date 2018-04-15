@@ -1,0 +1,46 @@
+extends ../layout.pug
+
+block append head
+    link(rel="stylesheet" href="/style/board.css")
+    link(rel="stylesheet" href="/style/nav_bar.css")
+
+block top
+    include ../inc/navbar.pug
+
+block content
+    #board_content
+        //- post list container
+        #job_list.list-group.col-lg-6.offset-lg-1.mt-1(role="tablist")
+            for post, index in jobList
+                //- each post row
+                #post_item.d-flex.flex-row.list-group-item.list-group-item-action
+                    //- post school logo TODO square logo
+                    #logo_wrap.col-md-2.thumbnail
+                        a(href='/employer/'+post.school)
+                            img#thumbnail_picture.img-thumbnail(src="https://pbs.twimg.com/profile_images/888491906316947456/RGtCyvLI_400x400.jpg")
+                    //- post info title, data, school
+                    #info_wrap.col-lg-10.row
+                        .col-lg-9
+                            a#post_title(href="/post?postId="+post.id) #{post.title}
+                            #post_school
+                                a(href="/school/"+post.school) #{post.school}
+                        .col-lg-3
+                            #post_time
+                                p #{post.formated_date}
+            //- page navifation
+            nav.pagination_div.d-flex.justify-content-end
+                //- current page number
+                span#current_page Page: #{pageNumber}
+                //- construct url for next and prev page
+                -   
+                    let next_page_url = "/board?page="+ (parseInt(pageNumber)+1);
+                    let prev_page_url = "/board?page="+ (parseInt(pageNumber)-1);
+                ul#pagination.pagination
+                    if pageNumber!=1
+                        li.page-item
+                            a.page-link(href=prev_page_url) Previous
+                    if jobList.length == 10
+                        li.page-item
+                            a.page-link(href=next_page_url) Next
+                    
+                    

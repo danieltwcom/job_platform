@@ -1,0 +1,17 @@
+/* board list group */
+#board_content a{
+    color: black;
+}
+
+#post_school a, #post_time{
+    color: #424242;
+}
+
+/* pagination */
+.pagination_div{
+    margin:2%;
+}
+
+#current_page{
+    padding:.5rem .75rem;
+}

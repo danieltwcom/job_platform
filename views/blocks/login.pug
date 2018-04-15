@@ -1,0 +1,172 @@
+extends ../layout.pug
+
+block append head
+    link(rel="stylesheet" href="/style/login.css")
+    
+block content
+  body
+    .container-fluid
+      //-- first row
+      #first_row.row.justify-content-center.vh-25
+        //-- logo
+        .col-sm-6
+          a(href='#')
+            img(src='/images/bc_logo.jpg')
+
+      //- second row
+      #second_row.row.justify-content-center
+        //- alert box
+        #alert_box.col-sm-6.alert(role="alert")
+          label#alert_text #{alert}
+          button#alert_close_btn.close(type="button" aria-label="Close")
+            span(aria-hidden="true") &times;
+
+      //- third row
+      #third_row.row.justify-content-center
+        //- card container
+        .card.bg-light.col-sm-6.p-0
+
+          //- card head
+          .card-header.bg-info
+            ul.nav.nav-tabs.nav-fill.card-header-tabs.mx-1
+              li.nav-item
+                a#login_form_tab.nav-link(href='#login_form', data-toggle='tab') Login
+              li.nav-item
+                a#signup_form_tab.nav-link(href='#signup_form', data-toggle='tab') Signup
+
+          //- card body
+          .tab-content.p-3
+
+            //- ~~ login form ~~
+            form#login_form.card-body.tab-pane.fade
+              //- email input
+              .form-group.row
+                .col-sm-12
+                  label Email Address
+                  .input-group
+                    .input-group-prepend
+                      span.input-group-text
+                        i.fa.fa-envelope
+                    input#login_email.form-control(type='email', aria-describeby='emailHelp', placeholder='Enter email')
+                  small#emailHelp.text-muted Enter your sign up email to login
+              //- password input
+              .form-group.row
+                .col-sm-12
+                  label Password
+                  .input-group
+                    .input-group-prepend
+                      span.input-group-text
+                        i.fa.fa-key
+                    input#login_password.form-control(type='password', aria-describedat='passwordHelp', placeholder='Enter password')
+              //- forgot password
+              .form-group
+                .col-sm-12
+                  .input-group
+                    a(href='#forgot_password') Forgot Password?
+              .form-group
+                button#login_submit_btn.btn.btn-primary(type='button') Login
+                
+            //- ~~ signup form ~~
+            form#signup_form.card-body.tab-pane.fade(action="/register" method="post" target="_self")
+              //- username input
+              .form-group.row
+                .col-sm-12
+                  label Username
+                  .input-group
+                    .input-group-prepend
+                      span.input-group-text
+                        i.fa.fa-user
+                    input#signup_username.form-control(type='email', aria-describeby='usernameHelp', placeholder='Enter username')
+                    //- TODO invalid feedback for all inputs
+                    .invalid-feedback length between 3~16 and only contain a-z, A-Z, 0-9, -, _ 
+                    .valid-feedback Good
+                  small#usernameHelp.text-muted Username is only use for display and identification
+              
+              //- email input
+              .form-group.row
+                .col-sm-12
+                  label Email Address
+                  .input-group
+                    .input-group-prepend
+                      span.input-group-text
+                        i.fa.fa-envelope
+                    input#signup_email.form-control(type='email', aria-describeby='emailHelp', name="email", placeholder='Enter email')
+                    .invalid-feedback example@domain.com
+                    .valid-feedback Good
+                  small#emailHelp.text-muted This email will use for login
+              
+              //- password input group
+              .form-group.row
+                //- password input
+                .col-sm-6
+                  label(for="signup_password") Password
+                  .input-group
+                    .input-group-prepend
+                      span.input-group-text
+                        i.fa.fa-key
+                    input#signup_password.form-control.input-sm(type='password', aria-describedat='passwordHelp', name="password", placeholder='Enter password')
+                    .invalid-feedback length 6~30 must contain 1 alphabet and 1 number
+                    .valid-feedback Good
+                //- password confirm input
+                .col-sm-6
+                    label(for="signup_confirm_password") Confirm Password
+                    .input-group
+                      .input-group-prepend
+                        span.input-group-text
+                          i.fa.fa-key
+                      input#signup_confirm_password.form-control(type='password', aria-describedat='passwordHelp', placeholder='Enter password')
+                      .invalid-feedback password entered does not match
+                      .valid-feedback Good
+
+              //- name input group
+              .form-group.row
+                //- first name
+                .col-sm-6
+                    label(for="signup_first_name") First Name
+                    .input-group
+                      .input-group-prepend
+                        span.input-group-text
+                          i.fa.fa-edit
+                      input#signup_first_name.form-control(type='text', placeholder='First name')
+                      .invalid-feedback only allow alphabets
+                      .valid-feedback Good
+                //- last name
+                .col-sm-6
+                  label(for="signup_last_name") Last Name
+                  .input-group
+                    .input-group-prepend
+                      span.input-group-text
+                        i.fa.fa-edit
+                    input#signup_last_name.form-control(type='text', placeholder='Last name')
+                    .invalid-feedback only allow alphabets
+                    .valid-feedback Good
+              
+              .form-group.row
+                //- role
+                .col-sm-6
+                  label Role
+                  .input-group.mb-3
+                    .input-group-prepend
+                      label.input-group-text
+                        i.fa.fa-user-circle
+                    select#signup_role.custom-select
+                      option(selected value=null) Choose...
+                      option(value="interpreter") Interpreter
+                      option(value="transcriber") Transcriber
+                    .invalid-feedback please choose a role
+                    .valid-feedback Good
+
+                //- Email Notification
+                .col-sm-6
+                  label Email Notification
+                  .row.col-sm-12
+                    .custom-checkbox.custom-control
+                      input#signup_email_notification.custom-control-input(type='checkbox' checked)
+                      label.custom-control-label(for="signup_email_notification" aria-describeby="emailNotificationHelp") Allow email notification
+                    small#emailNotificationHelp.text-muted Able to change it later in profile
+              .form-group
+                button#signup_submit_btn.btn.btn-primary(type='button') Signup
+
+      //- forth row
+      #forth_row.row.justify-content-start
+        .vh-25

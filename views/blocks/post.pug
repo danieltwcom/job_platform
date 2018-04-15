@@ -1,0 +1,45 @@
+extends ../layout.pug
+
+block append head
+    link(rel="stylesheet" href="/style/post.css")
+    link(rel="stylesheet" href="/style/nav_bar.css")
+
+block top
+    include ../inc/navbar.pug
+
+block content
+    script
+        | console.log(post);
+    .card-content.container.d-flex.justify-content-center
+        #job_card.card.col-lg-8.mt-1
+            //- img#school_banner.card-img-top(src="http://billhobbs.com/wp-content/uploads/2013/08/utah-sky-4I7C7611.jpg" alt="http://billhobbs.com/wp-content/uploads/2013/08/utah-sky-4I7C7611.jpg")
+            .card-block
+                #card_head.d-flex.justify-content-between
+                    .d-flex.align-items-center.col-9.col-sm-10.p-0
+                        #logo_wrap.col-md-2.thumbnail.pl-0
+                            a(href='/employer/'+post.school)
+                                img#thumbnail_picture.img-thumbnail(src="https://pbs.twimg.com/profile_images/888491906316947456/RGtCyvLI_400x400.jpg")
+                        div
+                            div
+                                h4.post-title.card-text #{post.title}
+                            div
+                                a.post-school.card-text.text-muted(href="/school/" + post.school) #{post.school}
+                                label &nbsp;-&nbsp;
+                                a.post-school.card-text.text-muted(href="/user/" + post.username) #{post.first_name} #{post.last_name}
+                            
+                    .d-flex.post_status.col-3.col-sm-2.p-0
+                        div
+                            div
+                                i.fa.fa-circle.post-status-sign.mr-1
+                                label.post-status-label #{post.status}
+                            div.post-date.card-text.text-muted #{post.formated_date}
+                
+                    
+                    
+                
+                
+                #card_detail
+                    p.card-text #{post.detail}
+                #post_action.d-flex.justify-content-end
+                    button#apply_btn.btn.btn-primary(type="button") Apply
+                    button#save_btn.btn.btn-primary(type="button") Save

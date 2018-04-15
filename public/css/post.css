@@ -1,0 +1,36 @@
+.post-status-sign{
+    font-size: x-small;
+    color: rgba(27, 150, 3, 0.7);
+}
+
+.post-school{
+    font-size: small;
+}
+
+.post-date{
+    font-size: small;
+}
+
+@media screen and (max-width:720px){
+    #logo_wrap{
+        display: none;
+    }
+    .card-content{
+        padding:0px;
+    }
+}
+
+@media screen and (max-width:360px){
+    .post-title{
+        font-size: 20px;
+    }
+    .card-content{
+        padding:0px;
+    }
+    .post-status-label{
+        font-size: 15px;
+    }
+    .post-date{
+        font-size:x-small;
+    }
+}

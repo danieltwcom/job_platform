@@ -1,0 +1,68 @@
+/* logo size */
+.navbar-brand > img{
+    widows: 40px;
+    height: 40px;
+}
+
+/* brand name  */
+.navbar-brand > label{
+    color: black;
+    margin-left: 10%
+}
+
+/* dropdown list */
+.navbar-btn{
+    border: none;
+}
+
+#navbarSupportedContent{
+    position: fixed;
+    z-index: 100;
+}
+
+/* side menu */
+.side-menu-btn-span{
+    margin-right:5%;
+}
+.side-menu-btn{
+    font-size: 150%;
+}
+
+.side-menu{
+    height: 100%;
+    width: 0;
+    z-index: 2;
+    position: fixed;
+    top:0;
+    left:0;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.3s;
+    background-color: #2c2c2c ;
+}
+
+.side-menu a{
+    padding: 8px;
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(196, 196, 196);
+    display: block;
+    transition: 0.3s;
+}
+
+.side-menu a:hover {
+    color: #585858;
+}
+
+.side-menu .side-close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+@media screen and (max-height:450px){
+    .side-menu{
+        padding-top:150px
+    }
+}

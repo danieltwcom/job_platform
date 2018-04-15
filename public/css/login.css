@@ -1,0 +1,15 @@
+.nav-item:hover{
+    background-color:white;
+}
+
+.nav-link{
+    color: white;
+}
+
+.input-group > a{
+    color: #007bff;
+}
+
+#alert_box{
+    display: none;
+}
